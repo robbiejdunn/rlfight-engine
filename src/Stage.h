@@ -1,6 +1,6 @@
-#ifndef PLAYER_H    // To make sure you don't declare the function more than once by including the header multiple times.
-#define PLAYER_H
+#ifndef STAGE_H    // To make sure you don't declare the function more than once by including the header multiple times.
+#define STAGE_H
 
-int playerSprite();
+void getDimensions();
 
 #endif

@@ -1,10 +1,7 @@
 #include "Stage.h"
 
-using namespace N;
-
 int main()
 {
-    Stage stage;
-    stage.getDimensions();
+    getDimensions();
     return 0;
 }
