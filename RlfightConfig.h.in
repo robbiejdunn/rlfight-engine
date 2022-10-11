@@ -1,3 +1,0 @@
-// the configured options and settings for Tutorial
-#define Rlfight_VERSION_MAJOR @Rlfight_VERSION_MAJOR@
-#define Rlfight_VERSION_MINOR @Rlfight_VERSION_MINOR@

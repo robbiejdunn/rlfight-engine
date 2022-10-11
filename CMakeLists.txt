@@ -1,111 +1,27 @@
 cmake_minimum_required(VERSION 3.10)
+
+# set the project name and version
+project(EngineTest VERSION 1.0)
+
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(namespace "game")
-project("Rlfight"
-    DESCRIPTION "RL Fight Game Engine"
-    VERSION 1.0
-)
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file(EngineTestConfig.h.in EngineTestConfig.h)
 
-if (NOT CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-    message(STATUS "This project has a top-level one called [${CMAKE_PROJECT_NAME}]")
-else()
-    message(STATUS "This project is a top-level one")
-endif()
+# add the RLFightEngine library
+add_subdirectory(RLFightEngine)
+list(APPEND EXTRA_LIBS RLFightEngine)
 
-add_library(${PROJECT_NAME} STATIC)
+# add the executable
+add_executable(EngineTest engine_test.cxx)
 
-target_sources(${PROJECT_NAME}
-    PRIVATE
-        src/game.cpp
-)
+target_link_libraries(EngineTest PUBLIC ${EXTRA_LIBS})
 
-target_include_directories(${PROJECT_NAME}
-    PRIVATE
-        # where the library itself will look for its internal headers
-        ${CMAKE_CURRENT_SOURCE_DIR}/src
-    PUBLIC
-        # where top-level project will look for the library's public headers
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        # where external projects will look for the library's public headers
-        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-)
-
-# note that it is not CMAKE_INSTALL_PREFIX we are checking here
-if(DEFINED CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    message(
-        STATUS
-        "CMAKE_INSTALL_PREFIX is not set\n"
-        "Default value: ${CMAKE_INSTALL_PREFIX}\n"
-        "Will set it to ${CMAKE_SOURCE_DIR}/install"
-    )
-    set(CMAKE_INSTALL_PREFIX
-        "${CMAKE_SOURCE_DIR}/install"
-        CACHE PATH "Where the library will be installed to" FORCE
-    )
-else()
-    message(
-        STATUS
-        "CMAKE_INSTALL_PREFIX was already set\n"
-        "Current value: ${CMAKE_INSTALL_PREFIX}"
-    )
-endif()
-
-# without it public headers won't get installed
-set(public_headers
-    include/game.h
-)
-# note that ${public_headers} has to be in quotes
-set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers}")
-
-set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
-
-# if you haven't included it already
-# definitions of CMAKE_INSTALL_LIBDIR, CMAKE_INSTALL_INCLUDEDIR and others
-include(GNUInstallDirs)
-
-# install the target and create export-set
-install(TARGETS ${PROJECT_NAME}
-    EXPORT "${PROJECT_NAME}Targets"
-    # these get default values from GNUInstallDirs, no need to set them
-    #RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} # bin
-    #LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} # lib
-    #ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} # lib
-    # except for public headers, as we want them to be inside a library folder
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME} # include/SomeLibrary
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR} # include
-)
-
-# generate and install export file
-install(EXPORT "${PROJECT_NAME}Targets"
-    FILE "${PROJECT_NAME}Targets.cmake"
-    NAMESPACE ${namespace}::
-    DESTINATION cmake
-)
-
-include(CMakePackageConfigHelpers)
-# https://decovar.dev/blog/2021/03/08/cmake-cpp-library/
-# generate the version file for the config file
-write_basic_package_version_file(
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    VERSION "${version}"
-    COMPATIBILITY AnyNewerVersion
-)
-# create config file
-configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/Config.cmake.in
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-    INSTALL_DESTINATION cmake
-)
-# install config files
-install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-    DESTINATION cmake
-)
-# generate the export targets for the build tree
-export(EXPORT "${PROJECT_NAME}Targets"
-    FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/${PROJECT_NAME}Targets.cmake"
-    NAMESPACE ${namespace}::
-)
+# add the binary tree to the search path for include files
+# so that we will find EngineTestConfig.h
+target_include_directories(EngineTest PUBLIC
+                           "${PROJECT_BINARY_DIR}"
+                           )
