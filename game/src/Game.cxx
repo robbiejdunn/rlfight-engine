@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "engine/Game.h"
+#include "game/Game.h"
 
 Game::Game()
 {

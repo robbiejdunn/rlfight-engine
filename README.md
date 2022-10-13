@@ -1,4 +1,4 @@
-# RLFight Engine
+# RLFight Game Engine
 
 ## Requirements
 

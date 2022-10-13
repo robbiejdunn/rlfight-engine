@@ -4,7 +4,7 @@
 #include <string>
 
 #include "EngineTestConfig.h"
-#include "engine.h"
+#include "game.h"
 #include "render.h"
 
 int main(int argc, char* argv[])
