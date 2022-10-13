@@ -1,6 +1,5 @@
-set_target_properties(engine PROPERTIES VERSION ${PROJECT_VERSION})
-
 add_library(engine src/Game.cxx src/GameState.cxx)
+set_target_properties(engine PROPERTIES VERSION ${PROJECT_VERSION})
 
 target_include_directories(engine
     INTERFACE

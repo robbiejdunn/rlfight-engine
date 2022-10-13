@@ -5,6 +5,7 @@
 
 #include "EngineTestConfig.h"
 #include "engine.h"
+#include "render.h"
 
 int main(int argc, char* argv[])
 {
@@ -16,6 +17,9 @@ int main(int argc, char* argv[])
     std::cout << "Stepping game engine" << std::endl;
     GameState state;
     state = game.step();
-    std::cout << "Player location from test: " << state.getPlayerLocation() << std::endl;
+    std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+
+    sdl2Test();
+
     return 0;
 }
