@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     state = game.step();
     std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
 
-    sdl2Test();
+    Application();
 
     return 0;
 }
