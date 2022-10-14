@@ -15,10 +15,12 @@ int main(int argc, char* argv[])
     game = Game();
     
     GameState state;
+    int userInput;
     Application app = Application();
 
-    for (int i = 0; i < 600; i++) {
+    for (int i = 0; i < 100; i++) {
         app.beginFpsCount();
+        userInput = app.getUserInput();
         std::cout << "Stepping game engine" << std::endl;
         state = game.step();
         std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;

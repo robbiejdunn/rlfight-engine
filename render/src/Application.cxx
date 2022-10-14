@@ -9,7 +9,7 @@ Application::Application()
     SDL_Init(SDL_INIT_VIDEO);
 
     window = SDL_CreateWindow(
-        "SDL2Test",
+        "RLFight",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
         640,
@@ -46,6 +46,25 @@ void Application::render(int xPosition)
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderPresent(renderer);
+}
+
+int Application::getUserInput()
+{
+    std::cout << "Getting user input..." << std::endl;
+    while (SDL_PollEvent(&inputEvent)) {
+        std::cout << "Checking input type" << std::endl;
+        switch(inputEvent.type) {
+            case SDL_KeyboardEvent:
+                std::cout << "Received a keyboard event" << std::endl;
+                break;
+            
+            default:
+                std::cout << "Unhandled input type" << std::endl;
+                break;
+        }
+    }
+    std::cout << "User input event queue processed" << std::endl;
+    return 1;
 }
 
 // teardown for when object leaves scope
