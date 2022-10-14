@@ -1,13 +1,5 @@
 # RLFight Game Engine
 
-# Rendering engine
-
-C++ static library providing rendering functionalities for RLFight using SDL2. The library provides:
-- 2D rendering for all common OS (windows, mac, linux, android, & iOS)
-- Audio
-- Controller input (keyboard & joystick)
-
-
 ## Requirements
 
 Only tested on linux (Ubuntu). Depends on:
@@ -33,10 +25,19 @@ Then call that build system to compile & link the project.
 cmake --build .
 ```
 
-Use the built `EngineTest` as needed.
+Use the built `RLFight` as needed.
 ```
-./EngineTest
+./RLFight
 ```
+
+## Components
+
+The following components are provided:
+- Deterministic gameplay engine
+- Deterministic 2D physics engine
+- Input reading from keyboard using SDL2
+- 2D rendering for all common OS (windows, mac, linux, android, & iOS) using SDL2
+- Audio playback using SDL2
 
 ## Links
 

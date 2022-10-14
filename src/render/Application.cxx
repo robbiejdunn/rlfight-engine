@@ -2,7 +2,7 @@
 
 #include "SDL.h"
 
-#include "game/Application.h"
+#include "render/Application.h"
 
 Application::Application()
 {

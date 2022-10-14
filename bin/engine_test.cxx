@@ -2,13 +2,13 @@
 #include <iostream>
 #include <string>
 
-#include "EngineTestConfig.h"
-#include "game.h"
+#include "RLFightConfig.h"
+#include "engine.h"
 
 int main(int argc, char* argv[])
 {
-    std::cout << argv[0] << " Version " << EngineTest_VERSION_MAJOR << "."
-            << EngineTest_VERSION_MINOR << std::endl;
+    std::cout << argv[0] << " Version " << RLFight_VERSION_MAJOR << "."
+            << RLFight_VERSION_MINOR << std::endl;
     std::cout << "Creating game object..." << std::endl;
     Game game;
     
