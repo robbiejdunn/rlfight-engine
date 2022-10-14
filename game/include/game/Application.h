@@ -15,5 +15,4 @@ private:
     SDL_Window *window;
     SDL_Renderer *renderer;
     Uint32 frameStartTime;
-    SDL_Event inputEvent;
 };

@@ -15,10 +15,6 @@ configure_file(EngineTestConfig.h.in EngineTestConfig.h)
 add_subdirectory(game)
 list(APPEND EXTRA_LIBS game)
 
-# add the render library
-add_subdirectory(render)
-list(APPEND EXTRA_LIBS render)
-
 # add the executable
 add_executable(EngineTest engine_test.cxx)
 
