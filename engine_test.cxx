@@ -1,10 +1,9 @@
-// A simple program that computes the square root of a number
 #include <cmath>
 #include <iostream>
 #include <string>
 
 #include "EngineTestConfig.h"
-#include "engine.h"
+#include "game.h"
 #include "render.h"
 
 int main(int argc, char* argv[])
@@ -14,12 +13,17 @@ int main(int argc, char* argv[])
     std::cout << "Creating game object..." << std::endl;
     Game game;
     game = Game();
-    std::cout << "Stepping game engine" << std::endl;
+    
     GameState state;
-    state = game.step();
-    std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+    Application app = Application();
 
-    sdl2Test();
+    for (int i = 0; i < 600; i++) {
+        app.beginFpsCount();
+        std::cout << "Stepping game engine" << std::endl;
+        state = game.step();
+        std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+        app.render(state.getPlayerLocation());
+    }
 
     return 0;
 }

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name and version
-project(EngineTest VERSION 0.2)
+project(EngineTest VERSION 0.3)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -11,9 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # to the source code
 configure_file(EngineTestConfig.h.in EngineTestConfig.h)
 
-# add the engine library
-add_subdirectory(engine)
-list(APPEND EXTRA_LIBS engine)
+# add the game library
+add_subdirectory(game)
+list(APPEND EXTRA_LIBS game)
 
 # add the render library
 add_subdirectory(render)

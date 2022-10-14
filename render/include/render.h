@@ -1,3 +1,3 @@
 #pragma once
 
-void sdl2Test();
+#include "render/Application.h"
