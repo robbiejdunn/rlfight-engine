@@ -1,4 +1,3 @@
-// A simple program that computes the square root of a number
 #include <cmath>
 #include <iostream>
 #include <string>
@@ -14,12 +13,17 @@ int main(int argc, char* argv[])
     std::cout << "Creating game object..." << std::endl;
     Game game;
     game = Game();
-    std::cout << "Stepping game engine" << std::endl;
+    
     GameState state;
-    state = game.step();
-    std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+    Application app = Application();
 
-    Application();
+    for (int i = 0; i < 600; i++) {
+        app.beginFpsCount();
+        std::cout << "Stepping game engine" << std::endl;
+        state = game.step();
+        std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+        app.render(state.getPlayerLocation());
+    }
 
     return 0;
 }
