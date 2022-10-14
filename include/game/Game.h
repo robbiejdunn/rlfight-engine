@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameState.h"
+#include "render/Application.h"
 
 class Game
 {
@@ -11,4 +12,5 @@ public:
 private:
     GameState currentState;
     int currentFrame;
+    Application application;
 };

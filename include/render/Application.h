@@ -8,6 +8,7 @@ public:
     Application();
     void render(int xPosition);
     void beginFpsCount();
+    int getUserInput();
     ~Application();
 
 private:
