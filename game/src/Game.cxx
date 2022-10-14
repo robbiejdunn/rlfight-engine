@@ -4,8 +4,6 @@
 
 Game::Game()
 {
-    application = Application();
-    currentState = GameState();
     std::cout << "Game state initialised with initial player position: " << currentState.getPlayerLocation() << std::endl;
     currentFrame = 0;
     std::cout << "Initialised current frame to value: " << currentFrame << std::endl;

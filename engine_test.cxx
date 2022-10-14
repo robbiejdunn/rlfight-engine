@@ -11,11 +11,10 @@ int main(int argc, char* argv[])
             << EngineTest_VERSION_MINOR << std::endl;
     std::cout << "Creating game object..." << std::endl;
     Game game;
-    game = Game();
     
     GameState state;
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 1000; i++) {
         std::cout << "Stepping game engine" << std::endl;
         state = game.step();
         std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;

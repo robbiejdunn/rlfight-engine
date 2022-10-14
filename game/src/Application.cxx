@@ -18,6 +18,7 @@ Application::Application()
     );
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+    std::cout << "Leaving application initialiser" << std::endl;
 }
 
 // used to measure time for each frame to be simulated and rendered to calculate FPS
@@ -37,36 +38,41 @@ void Application::render(int xPosition)
     rect.w = 200;
     rect.h = 200;
 
-    // SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    // SDL_RenderDrawRect(renderer, &rect);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    SDL_RenderDrawRect(renderer, &rect);
 
     // auto frameTime = SDL_GetTicks() - frameStartTime;
     // float fps = (frameTime > 0) ? 1000.0f / frameTime : 0.0f;
     // std::cout << "FPS calculated based on frame time: " << fps << std::endl;
 
-    // SDL_SetRenderDrawColor(*renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     std::cout << "Starting render presenting" << std::endl;
-    SDL_RenderPresent(renderer);
+    try {
+        SDL_RenderPresent(renderer);
+    }
+    catch(std::exception& e) {
+        std::cout << SDL_GetError() << std::endl;
+    }
     std::cout << "Render presenting" << std::endl;
 }
 
 int Application::getUserInput()
 {
-    // SDL_Event inputEvent;
-    // std::cout << "Getting user input..." << std::endl;
-    // while (SDL_PollEvent(&inputEvent)) {
-    //     std::cout << "Checking input type" << std::endl;
-    //     switch(inputEvent.type) {
-    //         case SDL_KEYDOWN:
-    //             std::cout << "Received a keyboard event" << std::endl;
-    //             break;
+    SDL_Event inputEvent;
+    std::cout << "Getting user input..." << std::endl;
+    while (SDL_PollEvent(&inputEvent)) {
+        std::cout << "Checking input type" << std::endl;
+        switch(inputEvent.type) {
+            case SDL_KEYDOWN:
+                std::cout << "Received a keyboard event" << std::endl;
+                break;
             
-    //         default:
-    //             std::cout << "Unhandled input type" << std::endl;
-    //             break;
-    //     }
-    // }
-    // std::cout << "User input event queue processed" << std::endl;
+            default:
+                std::cout << "Unhandled input type" << std::endl;
+                break;
+        }
+    }
+    std::cout << "User input event queue processed" << std::endl;
     return 1;
 }
 
