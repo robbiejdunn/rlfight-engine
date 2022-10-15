@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name and version
-project(RLFight VERSION 0.4)
+project(RLFight VERSION 0.5)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -18,6 +18,7 @@ add_library(
     src/game/Game.cxx
     src/game/GameState.cxx
     src/render/Application.cxx
+    src/input/InputReceiver.cxx
 )
 
 # SDL2

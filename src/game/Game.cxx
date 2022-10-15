@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "game/Game.h"
+#include "game/Game.h"  
 
 Game::Game()
 {
@@ -12,7 +12,8 @@ Game::Game()
 GameState Game::step()
 {
     application.beginFpsCount();
-    application.getUserInput();
+    inputReceiver.getPlayerInput();
+    // application.getUserInput();
     currentFrame += 1;
     std::cout << "Game simulation stepped, processing frame: " << currentFrame << std::endl;
     currentState.setPlayerLocation(currentState.getPlayerLocation() + 1);

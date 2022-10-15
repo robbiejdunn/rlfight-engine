@@ -56,26 +56,6 @@ void Application::render(int xPosition)
     std::cout << "Render presenting" << std::endl;
 }
 
-int Application::getUserInput()
-{
-    SDL_Event inputEvent;
-    std::cout << "Getting user input..." << std::endl;
-    while (SDL_PollEvent(&inputEvent)) {
-        std::cout << "Checking input type" << std::endl;
-        switch(inputEvent.type) {
-            case SDL_KEYDOWN:
-                std::cout << "Received a keyboard event" << std::endl;
-                break;
-            
-            default:
-                std::cout << "Unhandled input type" << std::endl;
-                break;
-        }
-    }
-    std::cout << "User input event queue processed" << std::endl;
-    return 1;
-}
-
 // teardown for when object leaves scope
 Application::~Application()
 {

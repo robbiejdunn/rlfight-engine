@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     
     GameState state;
 
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 100; i++) {
         std::cout << "Stepping game engine" << std::endl;
         state = game.step();
         std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
