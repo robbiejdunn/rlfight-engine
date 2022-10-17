@@ -1,6 +1,3 @@
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
-
 #include "SpriteLoader.h"
 // #include "SDL2IMAGE.h"
 #include "SDL_image.h"
