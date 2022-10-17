@@ -36,6 +36,7 @@ add_library(
     src/render/Application.cxx
     src/input/InputReceiver.cxx
     src/render/image_loader.cxx
+    src/game/GameImpl.cxx
 )
 
 # SDL2

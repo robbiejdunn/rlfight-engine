@@ -1,18 +1,13 @@
 #pragma once
 
 #include "GameState.h"
-#include "render/Application.h"
-#include "input/InputReceiver.h"
+
+class GameImpl;
 
 class Game
 {
 public:
+    GameImpl *gameImpl;
     Game();
     GameState step();
-
-private:
-    GameState currentState;
-    int currentFrame;
-    Application application;
-    InputReceiver inputReceiver;
 };
