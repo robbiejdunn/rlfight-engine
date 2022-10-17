@@ -5,6 +5,7 @@
 Only tested on linux (Ubuntu). Depends on:
 - cmake
 - libsdl2-dev
+- libsdl2-image-dev
 - g++
 
 ## Usage
