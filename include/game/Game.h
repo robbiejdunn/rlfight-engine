@@ -1,18 +1,24 @@
 #pragma once
-
+#include <memory> // PImpl
 #include "GameState.h"
-#include "render/Application.h"
-#include "input/InputReceiver.h"
+
+class GameImpl;
 
 class Game
 {
 public:
-    Game();
+    // Constructor and destructor
+    ~Game();
+    Game(std::string name);
+    
+
+    // Assignment operator and copy constructor
+    Game(const Game &other);
+    Game &operator=(Game rhs);
+
     GameState step();
 
 private:
-    GameState currentState;
-    int currentFrame;
-    Application application;
-    InputReceiver inputReceiver;
+    class Impl;
+    std::unique_ptr<Impl> pimpl;
 };
