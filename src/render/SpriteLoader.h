@@ -6,7 +6,8 @@ class SpriteLoader
 {
 public:
     SpriteLoader(SDL_Renderer *appRenderer);
-    void loadFileToTexture();
+    ~SpriteLoader();
+    SDL_Texture *loadFileToTexture();
 
 private:
     SDL_Renderer *renderer;

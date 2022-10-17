@@ -21,12 +21,14 @@ Application::Application()
     std::cout << "Leaving application initialiser" << std::endl;
     SpriteLoader sl = SpriteLoader(renderer);
     spriteLoader = &sl;
-    Application::loadSprites();
+    testTexture = Application::loadSprites();
 }
 
-void Application::loadSprites()
+SDL_Texture* Application::loadSprites()
 {
-    spriteLoader->loadFileToTexture();
+    SDL_Texture *t;
+    t = spriteLoader->loadFileToTexture();
+    return t;
 }
 
 // used to measure time for each frame to be simulated and rendered to calculate FPS
@@ -54,6 +56,7 @@ void Application::render(int xPosition)
     // std::cout << "FPS calculated based on frame time: " << fps << std::endl;
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderCopy(renderer, testTexture, NULL, NULL);
     // std::cout << "Starting render presenting" << std::endl;
     try {
         SDL_RenderPresent(renderer);
@@ -67,6 +70,8 @@ void Application::render(int xPosition)
 // teardown for when object leaves scope
 Application::~Application()
 {
+    SDL_DestroyTexture(testTexture);
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 }

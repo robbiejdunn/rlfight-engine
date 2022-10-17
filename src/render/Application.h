@@ -10,7 +10,7 @@ public:
     void render(int xPosition);
     void beginFpsCount();
     int getUserInput();
-    void loadSprites();
+    SDL_Texture *loadSprites();
     ~Application();
 
 private:
@@ -18,4 +18,5 @@ private:
     SDL_Renderer *renderer;
     Uint32 frameStartTime;
     SpriteLoader *spriteLoader;
+    SDL_Texture *testTexture;
 };
