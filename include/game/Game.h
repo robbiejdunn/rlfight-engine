@@ -2,6 +2,7 @@
 
 #include "GameState.h"
 #include "render/Application.h"
+#include "input/InputReceiver.h"
 
 class Game
 {
@@ -13,4 +14,5 @@ private:
     GameState currentState;
     int currentFrame;
     Application application;
+    InputReceiver inputReceiver;
 };

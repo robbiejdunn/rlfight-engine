@@ -46,34 +46,14 @@ void Application::render(int xPosition)
     // std::cout << "FPS calculated based on frame time: " << fps << std::endl;
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    std::cout << "Starting render presenting" << std::endl;
+    // std::cout << "Starting render presenting" << std::endl;
     try {
         SDL_RenderPresent(renderer);
     }
     catch(std::exception& e) {
         std::cout << SDL_GetError() << std::endl;
     }
-    std::cout << "Render presenting" << std::endl;
-}
-
-int Application::getUserInput()
-{
-    SDL_Event inputEvent;
-    std::cout << "Getting user input..." << std::endl;
-    while (SDL_PollEvent(&inputEvent)) {
-        std::cout << "Checking input type" << std::endl;
-        switch(inputEvent.type) {
-            case SDL_KEYDOWN:
-                std::cout << "Received a keyboard event" << std::endl;
-                break;
-            
-            default:
-                std::cout << "Unhandled input type" << std::endl;
-                break;
-        }
-    }
-    std::cout << "User input event queue processed" << std::endl;
-    return 1;
+    // std::cout << "Render presenting" << std::endl;
 }
 
 // teardown for when object leaves scope

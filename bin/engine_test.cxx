@@ -14,10 +14,14 @@ int main(int argc, char* argv[])
     
     GameState state;
 
-    for (int i = 0; i < 1000; i++) {
-        std::cout << "Stepping game engine" << std::endl;
+    while (true) {
+    // for (int i = 0; i < 500; i++) {
+        // std::cout << "Stepping game engine" << std::endl;
         state = game.step();
-        std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
+        if (state.getQuitRequested()) {
+            break;
+        }
+        // std::cout << "Player location from engine test: " << state.getPlayerLocation() << std::endl;
     }
 
     return 0;
