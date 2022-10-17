@@ -1,14 +1,15 @@
 #pragma once
 
 #include "SDL.h"
+#include "render/Sprite.h"
 
 class SpriteLoader
 {
 public:
-    SpriteLoader(SDL_Renderer *appRenderer);
+    SpriteLoader(SDL_Renderer *renderer);
     ~SpriteLoader();
-    SDL_Texture *loadFileToTexture();
+    Sprite *getSprite();
 
 private:
-    SDL_Renderer *renderer;
+    Sprite *sprite;
 };

@@ -1,22 +1,20 @@
 #include "SpriteLoader.h"
-// #include "SDL2IMAGE.h"
+
 #include "SDL_image.h"
 
-SpriteLoader::SpriteLoader(SDL_Renderer *appRenderer)
+SpriteLoader::SpriteLoader(SDL_Renderer *renderer)
 {
     IMG_Init(IMG_INIT_PNG);
-    renderer = appRenderer;
-}
-
-SDL_Texture* SpriteLoader::loadFileToTexture()
-{
-    SDL_Texture *texture;
-    texture = IMG_LoadTexture(renderer, "assets/test.png");
-    SDL_Log("Loaded successfully");
-    return texture;
+    Sprite s(renderer, "assets/test.png");
+    sprite = &s;
 }
 
 SpriteLoader::~SpriteLoader()
 {
     IMG_Quit();
+}
+
+Sprite *SpriteLoader::getSprite()
+{
+    return sprite;
 }

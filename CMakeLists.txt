@@ -37,6 +37,7 @@ add_library(
     src/render/Application.cxx
     src/input/InputReceiver.cxx
     src/render/SpriteLoader.cxx
+    src/render/Sprite.cxx
 )
 
 # sdl2 linking variables
