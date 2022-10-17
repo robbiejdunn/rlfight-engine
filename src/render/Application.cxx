@@ -21,6 +21,8 @@ Application::Application()
     std::cout << "Leaving application initialiser" << std::endl;
     SpriteLoader sl = SpriteLoader(renderer);
     testSprite = sl.getSprite();
+    Sprite ssl = *testSprite;
+    ssl.render(renderer, 300, 300, 1.0);
     // SDL_Quit();
 }
 

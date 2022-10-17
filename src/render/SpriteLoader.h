@@ -11,5 +11,5 @@ public:
     Sprite *getSprite();
 
 private:
-    Sprite *sprite;
+    Sprite sprite;
 };

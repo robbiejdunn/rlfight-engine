@@ -15,4 +15,5 @@ private:
     int textureHeight;
     SDL_Rect srcRect;
     SDL_Rect destRect;
+    const char *originalName;
 };
