@@ -13,12 +13,21 @@ GameState Game::step()
 {
     application.beginFpsCount();
     inputReceiver.getPlayerInput();
-    // application.getUserInput();
+
+    if (inputReceiver.getQuitProgram()) {
+        currentState.setQuitRequested(true);
+    }
+
     currentFrame += 1;
-    std::cout << "Game simulation stepped, processing frame: " << currentFrame << std::endl;
-    currentState.setPlayerLocation(currentState.getPlayerLocation() + 1);
-    std::cout << "Player location moved 1 unit to the right, new location: " << currentState.getPlayerLocation() << std::endl;
+    // std::cout << "Game simulation stepped, processing frame: " << currentFrame << std::endl;
+    if (inputReceiver.getLeftKeyHeld()) {
+        currentState.setPlayerLocation(currentState.getPlayerLocation() - 1);
+    }
+    else if (inputReceiver.getRightKeyHeld()) {
+        currentState.setPlayerLocation(currentState.getPlayerLocation() + 1);
+    }
+    // std::cout << "Player location moved 1 unit to the right, new location: " << currentState.getPlayerLocation() << std::endl;
     application.render(currentState.getPlayerLocation());
-    std::cout << "Rendered" << std::endl;
+    // std::cout << "Rendered" << std::endl;
     return currentState;
 }

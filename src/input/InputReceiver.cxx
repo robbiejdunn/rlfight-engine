@@ -9,20 +9,44 @@ InputReceiver::InputReceiver()
     std::cout << "Input receiver constructed" << std::endl;
 }
 
-PlayerInput InputReceiver::getPlayerInput()
+void InputReceiver::getPlayerInput()
 {
-    std::cout << "Getting user input..." << std::endl;
     while (SDL_PollEvent(&inputEvent)) {
-        std::cout << "Checking input type" << std::endl;
         switch(inputEvent.type) {
             case SDL_KEYDOWN:
-                std::cout << "Received a keyboard event" << std::endl;
+                switch(inputEvent.key.keysym.sym) {
+                    case SDLK_RIGHT:
+                        // std::cout << "Right key pressed" << std::endl;
+                        rightKeyHeld = true;
+                        break;
+                    case SDLK_LEFT:
+                        // std::cout << "Left key pressed" << std::endl;
+                        leftKeyHeld = true;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                switch(inputEvent.key.keysym.sym) {
+                    case SDLK_RIGHT:
+                        // std::cout << "Right key released" << std::endl;
+                        rightKeyHeld = false;
+                        break;
+                    case SDLK_LEFT:
+                        // std::cout << "Left key released" << std::endl;
+                        leftKeyHeld = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_QUIT:
+                std::cout << "Quit program pressed" << std::endl;
+                quitProgram = true;
                 break;
             default:
-                std::cout << "Unhandled input type" << std::endl;
                 break;
         }
     }
-    std::cout << "User input event queue processed" << std::endl;
-    return PlayerInput::DirRight;
 }

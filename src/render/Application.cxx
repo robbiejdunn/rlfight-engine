@@ -46,14 +46,14 @@ void Application::render(int xPosition)
     // std::cout << "FPS calculated based on frame time: " << fps << std::endl;
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-    std::cout << "Starting render presenting" << std::endl;
+    // std::cout << "Starting render presenting" << std::endl;
     try {
         SDL_RenderPresent(renderer);
     }
     catch(std::exception& e) {
         std::cout << SDL_GetError() << std::endl;
     }
-    std::cout << "Render presenting" << std::endl;
+    // std::cout << "Render presenting" << std::endl;
 }
 
 // teardown for when object leaves scope
