@@ -1,6 +1,7 @@
 #include <iostream>
 
-#include "game/Game.h"  
+#include "game/Game.h"
+#include "render/image_loader.h"
 
 Game::Game()
 {
@@ -28,6 +29,8 @@ GameState Game::step()
     }
     // std::cout << "Player location moved 1 unit to the right, new location: " << currentState.getPlayerLocation() << std::endl;
     application.render(currentState.getPlayerLocation());
+
+    imageLoader::testFunction();
     // std::cout << "Rendered" << std::endl;
     return currentState;
 }
