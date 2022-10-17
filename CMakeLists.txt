@@ -6,6 +6,7 @@ project(RLFight VERSION 0.6)
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -35,25 +36,39 @@ add_library(
     src/game/GameState.cxx
     src/render/Application.cxx
     src/input/InputReceiver.cxx
-    src/render/image_loader.cxx
+    src/render/SpriteLoader.cxx
 )
 
+# sdl2 linking variables
+find_package(PkgConfig REQUIRED)
+
 # SDL2
-find_package(SDL2 REQUIRED)
+pkg_search_module(SDL2 REQUIRED sdl2)
+pkg_search_module(SDL2IMAGE REQUIRED SDL2_image)
+
 target_link_libraries(
     engine
     PUBLIC
     ${SDL2_LIBRARIES}
 )
 
-# stb
+message(STATUS ${SDL2IMAGE_LIBRARIES})
+message(STATUS ${SDL2IMAGE_INCLUDE_DIRS})
 
+# SDL Image
+# pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
+target_link_libraries(
+    engine
+    PUBLIC
+    ${SDL2IMAGE_LIBRARIES}
+)
 
 target_include_directories(
     engine
     INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
 )
 
 target_include_directories(
@@ -62,6 +77,7 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/extern/stb
 )
 

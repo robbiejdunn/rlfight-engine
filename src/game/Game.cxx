@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "game/Game.h"
-#include "render/image_loader.h"
 #include "render/Application.h"
 #include "input/InputReceiver.h"
 
@@ -40,7 +39,6 @@ struct Game::Impl {
         // std::cout << "Player location moved 1 unit to the right, new location: " << currentState.getPlayerLocation() << std::endl;
         application.render(currentState.getPlayerLocation());
 
-        imageLoader::testFunction();
         // std::cout << "Rendered" << std::endl;
         return currentState;
     }
