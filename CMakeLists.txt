@@ -52,9 +52,6 @@ target_link_libraries(
     ${SDL2_LIBRARIES}
 )
 
-message(STATUS ${SDL2IMAGE_LIBRARIES})
-message(STATUS ${SDL2IMAGE_INCLUDE_DIRS})
-
 # SDL Image
 # pkg_search_module(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
 target_link_libraries(
