@@ -1,12 +1,13 @@
 #include <iostream>
 
-#include "SDL.h"
+#include "SDL_image.h"
 
 #include "render/Application.h"
 
 Application::Application()
 {
     SDL_Init(SDL_INIT_VIDEO);
+    IMG_Init(IMG_INIT_PNG);
 
     window = SDL_CreateWindow(
         "RLFight",
@@ -19,10 +20,12 @@ Application::Application()
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
     std::cout << "Leaving application initialiser" << std::endl;
-    SpriteLoader sl = SpriteLoader(renderer);
-    testSprite = sl.getSprite();
-    Sprite ssl = *testSprite;
-    ssl.render(renderer, 300, 300, 1.0);
+    // Application::
+
+    // SpriteLoader sl = SpriteLoader(renderer);
+    // testSprite = sl.getSprite();
+    // Sprite ssl = *testSprite;
+    // ssl.render(renderer, 300, 300, 1.0);
     // SDL_Quit();
 }
 
@@ -46,7 +49,7 @@ void Application::render(int xPosition)
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderDrawRect(renderer, &rect);
 
-    testSprite->render(renderer, 300, 300, 1.0);
+    // testSprite->render(renderer, 300, 300, 1.0);
 
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     // std::cout << "Starting render presenting" << std::endl;
@@ -62,8 +65,10 @@ void Application::render(int xPosition)
 // teardown for when object leaves scope
 Application::~Application()
 {
-    SDL_DestroyTexture(testTexture);
+    SDL_Log("Application GC");
+    // SDL_DestroyTexture(testTexture);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    IMG_Quit();
     SDL_Quit();
 }
