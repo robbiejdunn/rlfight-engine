@@ -35,9 +35,9 @@ add_library(
     src/game/GameState.cxx
     src/render/Application.cxx
     src/input/InputReceiver.cxx
-    src/render/SpriteLoader.cxx
     src/render/Sprite.cxx
     src/game/state/playerState/PlayerState.cxx
+    src/render/Animation.cxx
 )
 
 # sdl2 linking variables
