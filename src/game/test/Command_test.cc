@@ -2,6 +2,7 @@
 
 #include "game/input/InputHandler.h"
 #include "game/input/commands/MoveRightCommand.h"
+#include "game/GameActor.h"
 
 // Demonstrate some basic assertions.
 TEST(CommandTest, BasicAssertions) {
@@ -15,8 +16,12 @@ TEST(CommandTest, CommandExecute) {
     InputHandler ih;
     MoveRightCommand mrc;
     ih.bindButtonX(&mrc);
-    ih.handleInput();
-    ih.handleInput();
+
+    GameActor actor;
+
+    Command *command = ih.handleInput();
+    command->execute(actor);
+
     // EXPECT_EQ(testFunctionRes, 3);
     // EXPECT_NE(testFunctionRes, 99);
     // ih.handleInput();

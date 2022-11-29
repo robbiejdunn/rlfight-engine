@@ -12,8 +12,7 @@ void InputHandler::bindButtonX(Command* command)
     buttonX_ = command;
 }
 
-void InputHandler::handleInput()
+Command* InputHandler::handleInput()
 {
-    std::cout << "Test123" << std::endl;
-    buttonX_->execute();
+    return buttonX_;
 }
