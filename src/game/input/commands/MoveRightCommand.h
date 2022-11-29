@@ -1,4 +1,4 @@
-#include "../Command.h"
+// #include "game/input/Command.h"
 #include <iostream>
 
 class MoveRightCommand : public Command

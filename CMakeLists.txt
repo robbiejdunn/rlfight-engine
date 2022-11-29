@@ -117,13 +117,24 @@ add_executable(
 target_link_libraries(
   command_test
   GTest::gtest_main
-  ${EXTRA_LIBS}
+  engine
 )
-# target_link_libraries(RLFight PUBLIC ${EXTRA_LIBS})
+
 target_include_directories(
     command_test
-    PUBLIC
-    "${PROJECT_BINARY_DIR}"
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/extern/stb
 )
+
+# target_include_directories(
+#     command_test
+#     PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}/src
+# )
+
 include(GoogleTest)
 gtest_discover_tests(command_test)

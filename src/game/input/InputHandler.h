@@ -1,10 +1,12 @@
-#include "commands/MoveRightCommand.h"
+#include "game/input/Command.h"
 
 class InputHandler
 {
 public:
+    InputHandler();
     void handleInput();
+    void bindButtonX(Command *command);
 
 private:
-    MoveRightCommand* buttonX_;
+    Command* buttonX_;
 };

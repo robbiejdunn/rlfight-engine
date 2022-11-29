@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
-#include "src/game/input/InputHandler.h"
+#include "game/input/InputHandler.h"
+#include "game/input/commands/MoveRightCommand.h"
 
 // Demonstrate some basic assertions.
 TEST(CommandTest, BasicAssertions) {
@@ -11,7 +12,13 @@ TEST(CommandTest, BasicAssertions) {
 }
 
 TEST(CommandTest, CommandExecute) {
-    InputHandler ih = InputHandler();
+    InputHandler ih;
+    MoveRightCommand mrc;
+    ih.bindButtonX(&mrc);
+    ih.handleInput();
+    ih.handleInput();
+    // EXPECT_EQ(testFunctionRes, 3);
+    // EXPECT_NE(testFunctionRes, 99);
     // ih.handleInput();
     EXPECT_STREQ("hi", "hi");
     // ih.handleInput();
