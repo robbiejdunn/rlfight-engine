@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # set the project name and version
-project(RLFight VERSION 0.8)
+project(RLFight VERSION 0.9)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 14)
