@@ -1,7 +1,8 @@
 #pragma once
 
 #include "SDL.h"
-// #include "SpriteLoader.h"
+
+#include "render/Sprite.h"
 
 class Application
 {
@@ -16,7 +17,5 @@ private:
     SDL_Window *window;
     SDL_Renderer *renderer;
     Uint32 frameStartTime;
-    // SpriteLoader *spriteLoader;
-    // SDL_Texture *testTexture;
-    // Sprite *testSprite;
+    Sprite *sprite;
 };

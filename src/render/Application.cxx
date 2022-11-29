@@ -19,7 +19,14 @@ Application::Application()
     );
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+    
     std::cout << "Leaving application initialiser" << std::endl;
+
+    std::cout << "Creating sprite" << std::endl;
+    Sprite sra(renderer, "assets/fire-knight/idle/idle_1.png");
+    sprite = &sra;
+    std::cout << "Sprite created" << std::endl;
+
     // Application::
 
     // SpriteLoader sl = SpriteLoader(renderer);

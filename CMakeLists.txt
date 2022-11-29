@@ -1,11 +1,21 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.14)
 
 # set the project name and version
-project(RLFight VERSION 0.8)
+project(RLFight VERSION 0.9)
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Gtest
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -35,9 +45,9 @@ add_library(
     src/game/GameState.cxx
     src/render/Application.cxx
     src/input/InputReceiver.cxx
-    src/render/SpriteLoader.cxx
     src/render/Sprite.cxx
-    src/game/state/playerState/PlayerState.cxx
+    src/render/Animation.cxx
+    src/game/input/InputHandler.cxx
 )
 
 # sdl2 linking variables
@@ -97,3 +107,34 @@ target_include_directories(
     PUBLIC
     "${PROJECT_BINARY_DIR}"
 )
+
+# Testing
+enable_testing()
+add_executable(
+  command_test
+  "src/game/test/Command_test.cc"
+)
+target_link_libraries(
+  command_test
+  GTest::gtest_main
+  engine
+)
+
+target_include_directories(
+    command_test
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2IMAGE_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/extern/stb
+)
+
+# target_include_directories(
+#     command_test
+#     PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}/src
+# )
+
+include(GoogleTest)
+gtest_discover_tests(command_test)
