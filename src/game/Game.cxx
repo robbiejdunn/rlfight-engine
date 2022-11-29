@@ -3,7 +3,6 @@
 #include "game/Game.h"
 #include "render/Application.h"
 #include "input/InputReceiver.h"
-#include "game/state/playerState/PlayerState.h"
 
 
 struct Game::Impl {
@@ -18,7 +17,6 @@ struct Game::Impl {
         std::cout << "Game state initialised with initial player position: " << currentState.getPlayerLocation() << std::endl;
         currentFrame = 0;
         std::cout << "Initialised current frame to value: " << currentFrame << std::endl;
-        PlayerState ps((char*)"abc", false);
     }
 
     GameState step()

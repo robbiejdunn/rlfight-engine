@@ -19,6 +19,7 @@ Application::Application()
     );
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+    
     std::cout << "Leaving application initialiser" << std::endl;
 
     std::cout << "Creating sprite" << std::endl;
