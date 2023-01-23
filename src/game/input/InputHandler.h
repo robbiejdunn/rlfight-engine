@@ -1,10 +1,10 @@
+#pragma once
 #include "game/input/Command.h"
 
 class InputHandler
 {
 public:
-    InputHandler();
-    void handleInput();
+    Command* handleInput();
     void bindButtonX(Command *command);
 
 private:
