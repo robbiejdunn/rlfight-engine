@@ -4,7 +4,6 @@
 class InputHandler
 {
 public:
-    InputHandler();
     Command* handleInput();
     void bindButtonX(Command *command);
 

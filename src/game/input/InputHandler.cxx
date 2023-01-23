@@ -1,11 +1,6 @@
 #include "InputHandler.h"
 #include <iostream>
 
-InputHandler::InputHandler()
-{
-    std::cout << "Input Handler initialised" << std::endl;
-}
-
 void InputHandler::bindButtonX(Command* command)
 {
     std::cout << "Changing binding for button X" << std::endl;
