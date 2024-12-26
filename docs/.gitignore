@@ -1,0 +1,9 @@
+# python
+venv
+**/__pycache__
+*.pyc
+
+# python build files
+build
+*.egg-info
+dist
