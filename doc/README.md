@@ -1,4 +1,4 @@
-# RLFight-Engine Docs
+# FightRL-Engine Docs
 
 ## Installation & usage
 

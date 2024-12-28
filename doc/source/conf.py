@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'RLFight-Engine'
+project = 'FightRL-Engine'
 copyright = '2024, Robbie Dunn'
 author = 'Robbie Dunn'
 release = '0.1.0'

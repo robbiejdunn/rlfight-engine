@@ -1,4 +1,4 @@
-# RLFight Game Engine
+# FightRL Game Engine
 
 ## Requirements
 
@@ -26,9 +26,9 @@ Then call that build system to compile & link the project.
 cmake --build .
 ```
 
-Use the built `RLFight` as needed.
+Use the built `FightRL` as needed.
 ```
-./RLFight
+./FightRL
 ```
 
 ## Components

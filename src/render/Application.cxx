@@ -10,7 +10,7 @@ Application::Application()
     IMG_Init(IMG_INIT_PNG);
 
     window = SDL_CreateWindow(
-        "RLFight",
+        "FightRL",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
         640,

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # set the project name and version
-project(RLFight VERSION 0.9)
+project(FightRL VERSION 0.9)
 
 # specify the C++ standard
 set(CMAKE_CXX_STANDARD 14)
@@ -19,7 +19,7 @@ FetchContent_MakeAvailable(googletest)
 
 # configure a header file to pass some of the CMake settings
 # to the source code
-configure_file(RLFightConfig.h.in RLFightConfig.h)
+configure_file(FightRLConfig.h.in FightRLConfig.h)
 
 # https://cliutils.gitlab.io/modern-cmake/chapters/projects/submodule.html
 # find_package(Git QUIET)
@@ -98,12 +98,12 @@ add_dependencies(engine copy_assets)
 
 
 # add the executable
-add_executable(RLFight bin/engine_test.cxx)
+add_executable(FightRL bin/engine_test.cxx)
 
-target_link_libraries(RLFight PUBLIC ${EXTRA_LIBS})
+target_link_libraries(FightRL PUBLIC ${EXTRA_LIBS})
 
 target_include_directories(
-    RLFight
+    FightRL
     PUBLIC
     "${PROJECT_BINARY_DIR}"
 )
